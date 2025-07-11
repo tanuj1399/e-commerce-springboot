@@ -2,7 +2,6 @@ package com.tanuj.EcommerceApp.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.tanuj.EcommerceApp.enums.UserRole;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,9 +21,8 @@ public class UserDto {
     private String name;
     private String password;
     private String email;
-
     private String phoneNumber;
-    private UserRole role;
+    private String role;
 
     private List<OrderItemDto> orderItemList;
 
