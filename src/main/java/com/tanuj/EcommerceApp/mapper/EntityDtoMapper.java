@@ -16,7 +16,7 @@ public class EntityDtoMapper {
         userDto.setId(user.getId());
         userDto.setPhoneNumber(user.getPhoneNumber());
         userDto.setEmail(user.getEmail());
-        userDto.setRole(user.getRole());
+        userDto.setRole(user.getRole().name());
         userDto.setName(user.getName());
         return userDto;
     }
