@@ -40,7 +40,9 @@ public class User {
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Address address;
+
     @Column(name = "created_at")
+    @Builder.Default
     private final LocalDateTime createdAt = LocalDateTime.now();
 
 }

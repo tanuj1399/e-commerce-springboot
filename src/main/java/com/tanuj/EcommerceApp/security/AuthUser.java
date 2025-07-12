@@ -1,6 +1,7 @@
 package com.tanuj.EcommerceApp.security;
 
 import com.tanuj.EcommerceApp.entity.User;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @Data
 @Builder
+@AllArgsConstructor
 public class AuthUser implements UserDetails {
 
     private User user;
