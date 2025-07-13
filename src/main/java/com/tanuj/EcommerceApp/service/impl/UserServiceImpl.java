@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService {
                 .name(registrationRequest.getName())
                 .email(registrationRequest.getEmail())
                 .password(passwordEncoder.encode(registrationRequest.getPassword()))
-                .password((registrationRequest.getPassword()))
+                .phoneNumber((registrationRequest.getPhoneNumber()))
                 .role(role)
                 .build();
 
@@ -64,7 +64,7 @@ public class UserServiceImpl implements UserService {
 
         User user = userRepo.findByEmail(loginRequest.getEmail()).orElseThrow(()-> new NotFoundException("Email not found"));
         if(!passwordEncoder.matches(loginRequest.getPassword(), user.getPassword())){
-            throw new InvalidCredentialsException("Password does not match");
+            throw new InvalidCredentialsException("Incorrect password");
         }
 
         String token = jwtUtils.generateToken(user);
