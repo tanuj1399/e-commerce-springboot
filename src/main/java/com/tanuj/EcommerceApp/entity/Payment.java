@@ -17,6 +17,9 @@ public class Payment {
     private BigDecimal amount;
     private String method;
     private String status;
+    private String razorpayOrderId;
+    private String razorpayPaymentId;
+    private String razorpaySignature;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")

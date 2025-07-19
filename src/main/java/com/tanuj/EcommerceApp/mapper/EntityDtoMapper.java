@@ -102,4 +102,19 @@ public class EntityDtoMapper {
         return userDto;
     }
 
+    public PaymentDto mapPaymentToDtoBasic(Payment payment){
+        PaymentDto paymentDto = new PaymentDto();
+        paymentDto.setAmount(payment.getAmount());
+        paymentDto.setRazorpayPaymentId(payment.getRazorpayPaymentId());
+        paymentDto.setMethod(payment.getMethod());
+        paymentDto.setId(payment.getId());
+        paymentDto.setRazorpayOrderId(payment.getRazorpayOrderId());
+        paymentDto.setOrder(payment.getOrder());
+        paymentDto.setStatus(payment.getStatus());
+        paymentDto.setCreatedAt(payment.getCreatedAt());
+        paymentDto.setRazorpaySignature(payment.getRazorpaySignature());
+
+        return paymentDto;
+    }
+
 }

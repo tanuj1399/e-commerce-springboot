@@ -25,4 +25,8 @@ public class Order {
     private final LocalDateTime createdAt = LocalDateTime.now();
 
 //    PAYMENT
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "payment_id")
+    private Payment orderPayment;
+
 }
