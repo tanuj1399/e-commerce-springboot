@@ -73,7 +73,7 @@ public class OrderItemServiceImpl implements OrderItemService {
 
         return Response.builder()
                 .status(200)
-                .message("Order was placed successfully")
+                .message("Order placed, confirm payment")
                 .build();
     }
 

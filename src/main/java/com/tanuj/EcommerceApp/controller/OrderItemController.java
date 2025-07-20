@@ -1,11 +1,8 @@
 package com.tanuj.EcommerceApp.controller;
 
-import com.razorpay.RazorpayException;
 import com.tanuj.EcommerceApp.dto.OrderRequest;
-import com.tanuj.EcommerceApp.dto.PaymentDto;
 import com.tanuj.EcommerceApp.dto.Response;
 import com.tanuj.EcommerceApp.enums.OrderStatus;
-import com.tanuj.EcommerceApp.service.PaymentService;
 import com.tanuj.EcommerceApp.service.interf.OrderItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
@@ -24,27 +21,14 @@ import java.time.LocalDateTime;
 public class OrderItemController {
 
     private final OrderItemService orderItemService;
-    private final PaymentService paymentService;
 
     @PostMapping("/create-order")
-    public ResponseEntity<PaymentDto> placeOrder(@RequestBody OrderRequest orderRequest) throws RazorpayException {
+    public ResponseEntity<Response> placeOrder(@RequestBody OrderRequest orderRequest){
 //        PaymentReqResp paymentReqResp = paymentService.initiatePayment(orderRequest.getTotalPrice(), "INR");
-//        return ResponseEntity.ok(orderItemService.placeOrder(orderRequest));
-        return ResponseEntity.ok(paymentService.initiatePayment(orderRequest.getOrderId(), orderRequest.getTotalPrice(), "INR"));
-    }
-
-    @PostMapping("/confirm-order")
-    public ResponseEntity<?> confirmOrder(@RequestBody OrderRequest orderRequest,
-                                                 @RequestParam String razorpayOrderId,
-                                                 @RequestParam String razorpayPaymentId,
-                                                 @RequestParam String razorpaySignature){
-
-        if (!paymentService.confirmPayment(razorpayOrderId, razorpayPaymentId, razorpaySignature))
-            return ResponseEntity.badRequest().body("Payment failed");
-
         return ResponseEntity.ok(orderItemService.placeOrder(orderRequest));
-
+//        return ResponseEntity.ok(paymentService.initiatePayment(orderRequest.getOrderId(), orderRequest.getTotalPrice(), "INR"));
     }
+
 
     @PutMapping("/update-order-status/{orderId}")
     @PreAuthorize("hasAuthority('ADMIN')")
